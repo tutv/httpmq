@@ -16,7 +16,9 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
       - run:
           name: Publish to NPM
-          command: npm publish --access public
+          command: |
+            cat .npmrc
+            npm publish --access public
     branches:
       only:
         - master
