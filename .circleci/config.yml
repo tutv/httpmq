@@ -18,7 +18,7 @@ jobs:
           name: Publish to NPM
           command: |
             cat .npmrc
-            npm publish --access public
+            npm publish
     branches:
       only:
         - master
