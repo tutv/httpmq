@@ -1,0 +1,21 @@
+{
+  "name": "httpmq",
+  "version": "1.0.0",
+  "description": "RabbitMQ via HTTP in Node.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tutv/httpmq.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tutv/httpmq/issues"
+  },
+  "homepage": "https://github.com/tutv/httpmq#readme"
+}
