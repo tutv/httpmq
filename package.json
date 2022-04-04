@@ -1,6 +1,6 @@
 {
   "name": "httpmq",
-  "version": "1.0.1",
+  "version": "1.0.2g",
   "description": "RabbitMQ via HTTP in Node.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
