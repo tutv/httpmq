@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/tutv/httpmq/issues"
   },
-  "homepage": "https://github.com/tutv/httpmq#readme"
+  "homepage": "https://github.com/tutv/httpmq#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "dotenv": "^16.0.0"
+  }
 }
