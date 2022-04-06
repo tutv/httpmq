@@ -1,11 +1,18 @@
-import {BaseResponse} from "./BaseResponse"
+import {ConnectionOptions, MyRequestOptions} from "./ConnectionOptions"
+import {MakePromiseRequest} from "./MakePromiseRequest"
+
 
 export class RequestMaker {
-    constructor() {
+    private readonly options: ConnectionOptions
 
+    constructor(opts: ConnectionOptions) {
+        this.options = opts
     }
 
-    public async makeRequest(url: string): Promise<BaseResponse> {
-        return {}
+    public async makeRequest(path: string, args?: MyRequestOptions) {
+        const [httpOptions, data] = this.options.getHTTPOptions(path, args)
+        const promisify = new MakePromiseRequest(httpOptions, data)
+
+        return promisify.run()
     }
 }
