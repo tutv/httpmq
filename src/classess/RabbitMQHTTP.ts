@@ -2,6 +2,7 @@ import {ConnectionOptions} from "./ConnectionOptions"
 import {RequestMaker} from "./RequestMaker"
 import {QueueObject} from "../interfaces/QueueObject"
 import {ConnectionObject} from "../interfaces/ConnectionObject"
+import {PublishOptions} from "../interfaces/PublishOptions"
 
 
 export class RabbitMQHTTP {
@@ -11,6 +12,22 @@ export class RabbitMQHTTP {
     constructor(uri: string) {
         this.options = new ConnectionOptions(uri)
         this.request = new RequestMaker(this.options)
+    }
+
+    public async listConnections(): Promise<ConnectionObject []> {
+        const url = `/api/connections`
+
+        return this.request.makeRequest(url, {
+            method: 'GET'
+        })
+    }
+
+    public async listAllVhosts() {
+        const url = `/api/vhosts`
+
+        return this.request.makeRequest(url, {
+            method: 'GET'
+        })
     }
 
     public async listQueues(): Promise<QueueObject []> {
@@ -31,19 +48,31 @@ export class RabbitMQHTTP {
         })
     }
 
-    public async listConnections(): Promise<ConnectionObject []> {
-        const url = `/api/connections`
+    /**
+     *  Message will be published to the default exchange with routing key queueName
+     *
+     * @param queueName
+     * @param body
+     * @param opts
+     */
+    public async sendToQueue(queueName: string, body: any, opts?: PublishOptions) {
+        const str = JSON.stringify(body)
+        const url = `/api/exchanges/${this.options.getVhost()}/amq.default/publish`
+
+        const {persistent, headers} = Object.assign({persistent: true}, opts)
+        const delivery_mode = persistent ? "2" : "1"
+        const vHeaders = Object.assign({}, headers)
 
         return this.request.makeRequest(url, {
-            method: 'GET'
-        })
-    }
-
-    public async listAllVhosts() {
-        const url = `/api/vhosts`
-
-        return this.request.makeRequest(url, {
-            method: 'GET'
+            method: 'POST',
+            json: {
+                delivery_mode,
+                headers: vHeaders,
+                routing_key: queueName,
+                payload: str,
+                payload_encoding: "string",
+                properties: {},
+            }
         })
     }
 }
