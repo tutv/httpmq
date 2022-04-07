@@ -1,6 +1,6 @@
 {
   "name": "httpmq",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "private": false,
   "description": "RabbitMQ via HTTP in Node.js",
   "main": "dist/index.js",
@@ -12,7 +12,12 @@
     "type": "git",
     "url": "git+https://github.com/tutv/httpmq.git"
   },
-  "keywords": [],
+  "keywords": [
+    "http",
+    "AMQP",
+    "AMQP 0-9-1",
+    "RabbitMQ"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
