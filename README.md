@@ -1,7 +1,7 @@
 httpmq ![npm](https://img.shields.io/npm/v/httpmq) ![CircleCI](https://img.shields.io/circleci/build/github/tutv/httpmq) ![NPM](https://img.shields.io/npm/l/httpmq) ![npm](https://img.shields.io/npm/dm/httpmq)
 -------
 
-RabbitMQ via HTTP in Node.js
+RabbitMQ via [HTTP API](https://rawcdn.githack.com/rabbitmq/rabbitmq-server/v3.9.14/deps/rabbitmq_management/priv/www/api/index.html) in Node.js
 
 Install
 -------
