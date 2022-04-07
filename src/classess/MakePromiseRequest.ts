@@ -18,8 +18,6 @@ export class MakePromiseRequest {
 
         return new Promise<any>((resolve, reject) => {
             const req = httpModule.request(this.opts, (res: IncomingMessage) => {
-                console.log("RESPONSE:", new Date())
-
                 let responseData = ''
                 const _parseResponse = () => {
                     try {
