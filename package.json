@@ -1,6 +1,6 @@
 {
   "name": "httpmq",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "private": false,
   "description": "RabbitMQ via HTTP in Node.js",
   "main": "dist/index.js",
@@ -14,9 +14,11 @@
   },
   "keywords": [
     "http",
+    "API",
     "AMQP",
     "AMQP 0-9-1",
-    "RabbitMQ"
+    "RabbitMQ",
+    "typescript"
   ],
   "author": "",
   "license": "MIT",
