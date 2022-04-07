@@ -1,4 +1,4 @@
-httpmq
+httpmq ![npm](https://img.shields.io/npm/v/httpmq) ![CircleCI](https://img.shields.io/circleci/build/github/tutv/httpmq) ![NPM](https://img.shields.io/npm/l/httpmq) ![npm](https://img.shields.io/npm/dm/httpmq)
 -------
 
 RabbitMQ via HTTP in Node.js
