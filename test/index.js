@@ -9,7 +9,7 @@ const client = createClient(uri)
 
 setImmediate(async () => {
     try {
-        const result = await client.getQueue('coney:que.update-public')
+        const result = await client.listQueues('coney:que.update-public')
         console.log("RESULTS:", result.messages)
     } catch (error) {
         console.log("ERROR:", error)

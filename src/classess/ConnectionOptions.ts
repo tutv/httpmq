@@ -12,7 +12,7 @@ export class ConnectionOptions {
     private readonly uri: string
 
     private host: string = ''
-    private port: string = '80'
+    private port: string = '15672'
     private protocol: string = 'http:'
     private username: string = 'guest'
     private password: string = 'guest'
