@@ -59,9 +59,16 @@ export class RabbitMQHTTP {
         const str = JSON.stringify(body)
         const url = `/api/exchanges/${this.options.getVhost()}/amq.default/publish`
 
-        const {persistent, headers} = Object.assign({persistent: true}, opts)
+        const {persistent, headers, ttl} = Object.assign({persistent: true}, opts)
         const delivery_mode = persistent ? "2" : "1"
         const vHeaders = Object.assign({}, headers)
+
+        const properties: Record<string, any> = {}
+        if (ttl && ttl > 0) {
+            properties['expiration'] = (ttl || "").toString()
+        }
+
+        console.log("PROPERTIES:", properties)
 
         return this.request.makeRequest(url, {
             method: 'POST',
@@ -71,7 +78,7 @@ export class RabbitMQHTTP {
                 routing_key: queueName,
                 payload: str,
                 payload_encoding: "string",
-                properties: {},
+                properties,
             }
         })
     }
