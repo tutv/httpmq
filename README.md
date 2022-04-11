@@ -18,7 +18,7 @@ npm install httpmq --save
 ```javascript
 const {createClient} = require('httpmq')
 
-const uri = 'http://localhost:15672/vhost'
+const uri = 'http://localhost:15672/vhost?prefixQueue=prefix'
 const client = createClient(uri)
 ```
 

@@ -68,14 +68,15 @@ export class RabbitMQHTTP {
             properties['expiration'] = (ttl || "").toString()
         }
 
-        console.log("PROPERTIES:", properties)
+        const vQueueName = this.options.getQueueNameWithPrefix(queueName)
+        console.log(vQueueName)
 
         return this.request.makeRequest(url, {
             method: 'POST',
             json: {
                 delivery_mode,
                 headers: vHeaders,
-                routing_key: queueName,
+                routing_key: vQueueName,
                 payload: str,
                 payload_encoding: "string",
                 properties,

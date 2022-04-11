@@ -17,6 +17,7 @@ export class ConnectionOptions {
     private username: string = 'guest'
     private password: string = 'guest'
     private isHTTPS: boolean = false
+    private prefixQueue: string = ''
 
 
     public vhost: string = '/'
@@ -33,10 +34,14 @@ export class ConnectionOptions {
     private _setup() {
         const url = new URL(this.uri)
 
-        const {host, port, username, password, protocol, pathname} = url
+        const {host, port, username, password, protocol, pathname, searchParams} = url
         this.host = host
         this.protocol = protocol
         this.port = port || (this.protocol === 'https:' ? '443' : '80')
+
+        if (searchParams.has('prefixQueue')) {
+            this.prefixQueue = searchParams.get('prefixQueue') || ''
+        }
 
         if (username) {
             this.username = username
@@ -53,6 +58,10 @@ export class ConnectionOptions {
         if (pathname !== '/') {
             this.vhost = pathname.replace(/\//gi, '')
         }
+    }
+
+    public getQueueNameWithPrefix(queueName: string) {
+        return `${this.prefixQueue}${queueName}`
     }
 
     public getVhost(): string {
