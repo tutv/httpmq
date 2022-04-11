@@ -69,7 +69,6 @@ export class RabbitMQHTTP {
         }
 
         const vQueueName = this.options.getQueueNameWithPrefix(queueName)
-        console.log(vQueueName)
 
         return this.request.makeRequest(url, {
             method: 'POST',
