@@ -41,7 +41,8 @@ export class RabbitMQHTTP {
 
     public async getQueue(queueName: string): Promise<QueueObject> {
         const vhost = this.options.getVhost()
-        const url = `/api/queues/${vhost}/${queueName}`
+        const vQueueName = this.options.getQueueNameWithPrefix(queueName)
+        const url = `/api/queues/${vhost}/${vQueueName}`
 
         return this.request.makeRequest(url, {
             method: 'GET'

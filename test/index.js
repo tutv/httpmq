@@ -10,7 +10,7 @@ const client = createClient(uri)
 setImmediate(async () => {
     try {
         const body = {"_id": "ddddd", "syncAll": true}
-        const result = await client.sendToQueue('sync-products.requeue', body, {ttl: 7200_000})
+        const result = await client.getQueue('sync-products.requeue')
         console.log("RESULTS:", result)
     } catch (error) {
         console.log("ERROR:", error)
