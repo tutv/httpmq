@@ -42,7 +42,6 @@ const queues = await client.listQueues()
 const queue = await client.getQueue('queueName')
 
 // Send to queue
-// Get sepecific queue
 await client.sendToQueue('queueName', body, {ttl: 7200_000})
 ```
 
